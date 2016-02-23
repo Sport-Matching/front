@@ -1,0 +1,3 @@
+[submodule "luticate"]
+	path = luticate
+	url = https://git.rthoni.com/robin.thoni/luticate-front-front
