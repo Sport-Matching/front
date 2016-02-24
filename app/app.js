@@ -13,54 +13,19 @@ var app = angular.module('app', [
     'appSdk'
 ]);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
-
-        $stateProvider.state('root', {
-            abstract: true,
-            template: '<div ui-view=""></div>',
-            resolve: ['luticateAuthUsers', function(luticateAuthUsers)
-            {
-                return luticateAuthUsers.loadUserData(null);
-            }]
-        });
+app.config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
 
         //$locationProvider.html5Mode(true);
 
-        $stateProvider.state('login',{
-            url:'/',
-            parent: 'root',
-            templateUrl:'views/login.html',
-            controller:'LoginController',
-            resolve:{}
-        });
-
         $stateProvider.state('home',{
             url:'/home',
-            parent: 'root',
             templateUrl:'views/home.html',
             controller:'HomeController',
             revolve:{}
         });
 
         $urlRouterProvider.otherwise('/');
-
-        $httpProvider.interceptors.push(['luticateAuthCache', '$injector', '$q',
-            function (luticateAuthCache, $injector, $q) {
-                return {
-                    'request': function (config) {
-                        var token = luticateAuthCache.getToken();
-
-                        if (token != null)
-                            config.headers['X-Authorization'] = token;
-
-                        return config;
-                    },
-                    'responseError': function(rejection) {
-                        return $q.reject(rejection);
-                    }
-                };
-            }]);
 
     }])
     .directive('dateNow', ['$filter', function($filter) {
@@ -69,9 +34,4 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationP
                 $element.text($filter('date')(new Date(), $attrs.dateNow));
             }
         };
-    }])
-    .run(['$rootScope', '$state',function ($rootScope, $state) {
-        $rootScope.$on('$stateChangeError', function (e, curr, prev) {
-            //$state.go('login');
-        });
     }]);
