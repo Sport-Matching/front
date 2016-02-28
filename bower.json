@@ -6,21 +6,14 @@
   "license": "",
   "private": true,
   "dependencies": {
-    "angular": "1.4.x",
+    "angular": "1.5.x",
     "jquery": "2.1.x",
-    "angular-bootstrap": "0.12.x",
     "angular-ui-router": "0.2.x",
     "bootstrap": "3.3.x",
     "less": "1.7.x",
     "angular-local-storage": "0.2.3",
-    "flat-ui": "~2.2.2",
-    "angular-dialog-service": "5.2.8",
     "luticate-utils": "https://git.rthoni.com/luticate/front-utils.git#0.1.x",
-    "luticate-auth": "https://git.rthoni.com/luticate/front-auth.git#0.1.x"
-  },
-  "resolutions": {
-    "angular": "1.4.x",
-    "angular-bootstrap": "^0.14.3",
-    "angular-dialog-service": "5.2.11"
+    "luticate-auth": "https://git.rthoni.com/luticate/front-auth.git#0.1.x",
+    "angular-material": "^1.0.5"
   }
 }

@@ -10,7 +10,8 @@ var app = angular.module('app', [
     'ngSanitize',
     'luticateUtils',
     'luticateAuth',
-    'appSdk'
+    'appSdk',
+    'ngMaterial'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -19,7 +20,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
         //$locationProvider.html5Mode(true);
 
         $stateProvider.state('home',{
-            url:'/home',
+            url:'/',
+            title: 'Accueil',
             templateUrl:'views/home.html',
             controller:'HomeController',
             revolve:{}
@@ -34,4 +36,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 $element.text($filter('date')(new Date(), $attrs.dateNow));
             }
         };
-    }]);
+    }])
+    .run(['$rootScope', '$state',
+        function ($rootScope, $state) {
+            $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
+                $rootScope.title = current.title + " - Sport-Matching";
+            });
+        }]);
