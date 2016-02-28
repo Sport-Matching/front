@@ -15,8 +15,8 @@
     "angular-local-storage": "0.2.3",
     "flat-ui": "~2.2.2",
     "angular-dialog-service": "5.2.8",
-    "luticate-utils": "https://git.rthoni.com/robin.thoni/luticate-front-utils.git#0.1.x",
-    "luticate-auth": "https://git.rthoni.com/robin.thoni/luticate-front-auth.git#0.1.x"
+    "luticate-utils": "https://git.rthoni.com/luticate/front-utils.git#0.1.x",
+    "luticate-auth": "https://git.rthoni.com/luticate/front-auth.git#0.1.x"
   },
   "resolutions": {
     "angular": "1.4.x",
