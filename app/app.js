@@ -8,8 +8,8 @@ var app = angular.module('app', [
     'LocalStorageModule',
     'dialogs.main',
     'ngSanitize',
-    'luticateUtils',
-    'luticateAuth',
+    //'luticateUtils',
+    //'luticateAuth',
     'appSdk',
     'ngMaterial'
 ]);

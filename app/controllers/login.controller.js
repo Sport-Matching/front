@@ -1,4 +1,4 @@
-angular.module('app')
+/*angular.module('app')
     .controller('LoginController', ['$scope', '$state', 'luticateAuthUsers', 'luticateAuthCache',
         function($scope, $state, luticateAuthUsers, luticateAuthCache) {
             $scope.username = "";
@@ -29,4 +29,4 @@ angular.module('app')
                     });
             };
         }
-    ]);
+    ]);*/
