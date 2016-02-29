@@ -1,5 +1,15 @@
 <div ng-controller="NavBarController" class="div-header">
     <img src="/Design/sport-matching-logo.png" class="img-logo"/>
     <div class="clearfix"></div>
-    <input class="input-search" id="navbarSearch" ng-model="search.text" />
+    <!-- <input class="input-search" id="navbarSearch" ng-model="search.text" /> -->
+    <md-autocomplete class="input-search" ng-disabled="false" md-no-cache="true" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item" md-min-length="0" placeholder="Nadal vs Federer, Tsonga, Roland Garros...">
+        <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">
+                {{ item }}
+            </span>
+        </md-item-template>
+        <md-not-found>
+            No states matching "{{ searchText }}" were found.
+        </md-not-found>
+    </md-autocomplete>
 </div>
