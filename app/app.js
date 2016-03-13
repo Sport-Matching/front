@@ -8,8 +8,8 @@ var app = angular.module('app', [
     'LocalStorageModule',
     'dialogs.main',
     'ngSanitize',
-    //'luticateUtils',
-    //'luticateAuth',
+    'luticateUtils',
+    'luticateAuth',
     'appSdk',
     'ngMaterial'
 ]);
@@ -21,7 +21,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
         $stateProvider.state('home',{
             url:'/',
-            title: 'Accueil',
+            title: 'Home',
             templateUrl:'views/home.html',
             controller:'HomeController',
             revolve:{}
