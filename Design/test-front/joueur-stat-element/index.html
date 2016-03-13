@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EmulateIE9" >
+    <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="js/radiusProgress.js"></script>
+    <script type="text/javascript" src="js/progressLine.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div id="circular">
+        <div id="div1"></div>
+    </div>
+    <div id="line">
+        <div id="div2"></div>
+    </div>
+
+    <script language="JavaScript">
+    start();
+
+    function start() {
+        radialProgress(document.getElementById('div1')).label("MATCH WIN").diameter(150).value(25).render();
+        progressLine(document.getElementById('div2')).valueLeft(33);
+    }
+    </script>
+
+</body>
+</html>

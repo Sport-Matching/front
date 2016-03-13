@@ -1,0 +1,11 @@
+{
+  "name": "app",
+  "description": "app",
+  "version": "0.1.0",
+  "homepage": "",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "d3": "^3.5.16"
+  }
+}

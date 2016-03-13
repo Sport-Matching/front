@@ -1,0 +1,63 @@
+#circular {
+    margin: 0px auto;
+}
+
+#line {
+    width: 600px;
+    height: 40px;
+    margin: 0px auto;
+}
+
+#div1 {
+    margin: auto;
+}
+
+#div1 .arc {
+    fill: rgb(229, 120, 80);
+}
+
+.background {
+    /*color of background of arc*/
+    fill: rgb(255, 255, 255);
+}
+
+.component {
+    /*color of background of no select arc*/
+    fill: rgb(225, 225, 225);
+    font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+}
+
+.arc {
+    fill: #4e8fff;
+}
+
+.label {
+    font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+    fill: rgb(229, 120, 80);
+}
+
+.label-text {
+    font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+    fill: rgb(229, 120, 80);
+}
+
+.radial-svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.leftProgressLine {
+    fill: rgb(229, 120, 80);
+}
+
+.rightProgressLine {
+    fill: rgb(225, 225, 225);
+}
+
+.progress-text {
+    font-family: "Helvetic Neue", Helvetica, Arial;
+    fill: rgb(255, 255, 255);
+}
