@@ -16,7 +16,6 @@ var app = angular.module('app', [
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-
         //$locationProvider.html5Mode(true);
 
         $stateProvider.state('home',{

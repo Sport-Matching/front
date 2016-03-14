@@ -1,10 +1,21 @@
-<p>
-    text
-</p>
-
-<div>
-    <md-button ng-click="click()" class="md-primary">
-        Test.
-    </md-button>
+<div id="player" ng-if="showPlayerPart">
+    <div class="content-part" id="player-stat" ng-if="showPlayerStatPart">
+        <div class="content-part-title" id="player-stat-title">
+            Statistics
+        </div>
+        <div class="content-part-cnt" id="player-stat-content">
+            <div class="content-part-cnt-head" id="player-stat-content-head">
+                <md-button ng-click="click()" class="md-primary content-part-cnt-head-button">
+                    Hard courts
+                </md-button>
+                <md-button ng-click="click()" class="md-primary content-part-cnt-head-button">
+                    Clay courts
+                </md-button>
+                <md-button ng-click="click()" class="md-primary content-part-cnt-head-button">
+                    Grass courts
+                </md-button>
+            </div>
+            <div id="player-stat-content-body"></div>
+        </div>
+    </div>
 </div>
-
