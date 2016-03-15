@@ -1,4 +1,4 @@
-function progressLine(parent) {
+function progressLine(parent, color) {
     var _height = 35, _width = 500;
     var _fontSize = 18;
 
@@ -11,7 +11,11 @@ function progressLine(parent) {
             d3.select(this).remove();
         });
 
-        var container = d3.select(parent).append("svg").attr("width", _width).attr("height", _height).attr("opacity", 0.0);
+        var container = d3.select(parent).append("svg")
+            .attr("width", _width)
+            .attr("height", _height)
+            .attr("opacity", 0.0);
+
         var b = container.node().getBoundingClientRect();
 
         var leftProgressLine = container.append("rect")
@@ -19,7 +23,8 @@ function progressLine(parent) {
             .attr("y", 0)
             .attr("width", b.width * ((_valueLeft - _minValue) / _maxValue))
             .attr("height", b.height)
-            .attr("class", "leftProgressLine");
+            .attr("class", "leftProgressLine")
+            .attr("style", "fill: " + color + ";");
 
         var bl = leftProgressLine.node().getBoundingClientRect();
         var rightProgressLine = container.append("rect")

@@ -1,4 +1,4 @@
-function radialProgress(parent) {
+function radialProgress(parent, color) {
     var _data=null,
         _duration= 1000,
         _selection,
@@ -33,6 +33,11 @@ function radialProgress(parent) {
 
         _selection.each(function (data) {
 
+            var tabOldSVG = d3.select(parent).selectAll("svg");
+            tabOldSVG.each(function(index, el) {
+                d3.select(this).remove();
+            });
+
             // Select the svg element, if it exists.
             var svg = d3.select(this).selectAll("svg").data([data]);
             var enter = svg.enter().append("svg").attr("class","radial-svg").append("g");
@@ -59,6 +64,7 @@ function radialProgress(parent) {
 
             background.append("text")
                 .attr("class", "label-text")
+                .style("fill", color)
                 .attr("transform", "translate(" + _width/2 + "," + (_width + _fontSize) + ")")
                 .text(_label);
 
@@ -73,21 +79,15 @@ function radialProgress(parent) {
 
             path.enter().append("path")
                 .attr("class","arc")
+                .style("fill", color)
                 .attr("transform", "translate(" + _width/2 + "," + _width/2 + ")")
                 .attr("d", _arc);
-
-            //Another path in case we exceed 100%
-            var path2 = svg.select(".arcs").selectAll(".arc2").data(data);
-            path2.enter().append("path")
-                .attr("class","arc2")
-                .attr("transform", "translate(" + _width/2 + "," + _width/2 + ")")
-                .attr("d", _arc2);
-
 
             enter.append("g").attr("class", "labels");
             var label = svg.select(".labels").selectAll(".label").data(data);
             label.enter().append("text")
                 .attr("class","label")
+                .style("fill", color)
                 .attr("y",_width/2+_fontSize/3)
                 .attr("x",_width/2)
                 .attr("width",_width)
