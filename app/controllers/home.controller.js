@@ -11,6 +11,24 @@ angular.module('app')
                         .value(25)
                         .render();
 
+                radialProgress(document.getElementById('player-stat-content-body-radial-little-quart'))
+                    .label("QUART WIN")
+                    .diameter(120)
+                    .value(28)
+                    .render();
+
+                radialProgress(document.getElementById('player-stat-content-body-radial-little-demi'))
+                    .label("DEMI WIN")
+                    .diameter(120)
+                    .value(23)
+                    .render();
+
+                radialProgress(document.getElementById('player-stat-content-body-radial-little-final'))
+                    .label("FINAL WIN")
+                    .diameter(120)
+                    .value(12)
+                    .render();
+
                 progressLine(document.getElementById('player-stat-content-body-linear-cnt'))
                     .valueLeft(33);
             }

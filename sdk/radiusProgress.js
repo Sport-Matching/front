@@ -35,7 +35,6 @@ function radialProgress(parent) {
 
             // Select the svg element, if it exists.
             var svg = d3.select(this).selectAll("svg").data([data]);
-
             var enter = svg.enter().append("svg").attr("class","radial-svg").append("g");
 
             measure();
