@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('HomeController', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog',
-        function($scope, $mdBottomSheet, $mdSidenav, $mdDialog){
+    .controller('HomeController', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$timeout',
+        function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $timeout){
             function generatePlayerView(color) {
                 $scope.showPlayerPart = true;
                 $scope.showPlayerStatPart = true;
@@ -34,17 +34,16 @@ angular.module('app')
             }
 
             $scope.clickHardCourtsButton = function() {
-                console.log("clickHardCourtsButton()");
                 generatePlayerView("rgb(75, 165, 240)");
             };
             $scope.clickClayCourtsButton = function() {
-                console.log("clickClayCourtsButton()");
                 generatePlayerView("rgb(215, 125, 90)");
             };
             $scope.clickGrassCourtsButton = function() {
-                console.log("clickGrassCourtsButton()");
                 generatePlayerView("rgb(135, 165, 95)");
             };
 
-            generatePlayerView("rgb(75, 165, 240)");
+            $timeout(function () {
+                generatePlayerView("rgb(75, 165, 240)");
+            }, 0);
     }]);
