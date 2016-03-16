@@ -1,4 +1,4 @@
-function radialProgress(parent, color) {
+function radialProgress(parent, color, backgroundColor) {
     var _data=null,
         _duration= 1000,
         _selection,
@@ -49,8 +49,9 @@ function radialProgress(parent, color) {
 
 
             var background = enter.append("g").attr("class","component");
-
-
+            if (typeof backgroundColor !== 'undefined') {
+                background.style('fill', backgroundColor);
+            }
             _arc.endAngle(360 * (Math.PI/180));
 
             background.append("rect")

@@ -24,26 +24,29 @@
                         <div class="radial-content-mini" id="player-stat-content-body-radial-little-final"></div>
                     </div>
                 </div>
-                <!-- <div class="linear-part" id="player-stat-content-body-linear">
-                    <div class="linear-title" id="player-stat-content-body-linear-title">
-                        Win the first set
-                    </div>
-                    <div class="linear-cnt" id="player-stat-content-body-linear-cnt"></div>
-                </div> -->
-                <linear-progress-directive linear-title="Win the first set" id-linear="player-stat-content-body-linear-cnt">
-                </linear-progressdirective>
             </div>
+            <linear-progress-directive linear-title="Win the first set" id-linear="player-stat-content-body-linear-cnt">
+            </linear-progressdirective>
         </div>
     </div>
 
-    <div id="player-predict">
+    <div class="content-part" id="player-predict" ng-show="showPlayerPredictionPart">
         <div class="content-part-title">
             Prediction
         </div>
         <div class="content-part-cnt">
             <div class="player-predict-cnt">
-                <div class="player-predict-cnt-top"></div>
-                <div class="player-predict-cnt-bottom"></div>
+                <div class="player-predict-cnt-date">22/05/2017 in Roland Garros</div>
+                <div class="player-predict-cnt-top">
+                    <div class="player-predict-cnt-top-name player-predict-cnt-top-name-left">Rafael NADAL</div>
+                    <div class="player-predict-cnt-top-radial player-predict-cnt-top-radial-azure" id="player-predict-radial-azure-1"></div>
+                    <div class="player-predict-cnt-top-radial player-predict-cnt-top-radial-twitter" id="player-predict-radial-twitter-1"></div>
+                    <div class="player-predict-cnt-top-name player-predict-cnt-top-name-right">Novak DJOKOVIC</div>
+                </div>
+                <div class="player-predict-cnt-bottom">
+                    <linear-progress-directive linear-title="Win the first set" id-linear="player-predict-cnt-linear-1">
+                    </linear-progressdirective>
+                </div>
             </div>
         </div>
     </div>

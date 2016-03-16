@@ -1,4 +1,4 @@
-function progressLine(parent, color) {
+function progressLine(parent, leftcolor, showRightValue, rightColor) {
     var _height = 35, _width = 500;
     var _fontSize = 18;
 
@@ -22,10 +22,17 @@ function progressLine(parent, color) {
             .attr("width", 0)
             .attr("height", _height)
             .attr("class", "leftProgressLine")
-            .attr("style", "fill: " + color + ";");
+            .attr("style", "fill: " + leftcolor + ";");
 
-        var bl = leftProgressLine.node().getBoundingClientRect();
         var leftValue = _width * ((_valueLeft - _minValue) / _maxValue);
+
+        var rightProgressLine = container.append("rect")
+            .attr("x", _width)
+            .attr("y", 0)
+            .attr("width", 0)
+            .attr("height", _height)
+            .attr("class", "rightProgressLine")
+            .attr("style", "fill: " + rightColor + ";");
 
         var leftText = container.append("text")
             .attr("class", "progress-text")
@@ -34,6 +41,16 @@ function progressLine(parent, color) {
             .style({"font-size": _fontSize + "px"})
             .text((((_valueLeft - _minValue) / _maxValue) * 100) + "%");
 
+        if (showRightValue === true) {
+            var rightText = container.append("text")
+                .attr("class", "progress-text")
+                .attr("y", (_fontSize / 3) + (_height / 2))
+                .attr("x", _width - 50)
+                .style({"font-size": _fontSize + "px"})
+                .text((100 - (((_valueLeft - _minValue) / _maxValue) * 100)) + "%");
+        }
+
+
         container.transition()
             .duration(1000)
             .attr("opacity", 1.0);
@@ -41,6 +58,11 @@ function progressLine(parent, color) {
         leftProgressLine.transition()
             .duration(1000)
             .attr('width', leftValue);
+
+        rightProgressLine.transition()
+            .duration(1000)
+            .attr('x', leftValue)
+            .attr('width', _width - leftValue);
     }
 
     make.minValue = function(_) {
