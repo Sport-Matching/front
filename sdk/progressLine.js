@@ -21,18 +21,13 @@ function progressLine(parent, color) {
         var leftProgressLine = container.append("rect")
             .attr("x", 0)
             .attr("y", 0)
-            .attr("width", b.width * ((_valueLeft - _minValue) / _maxValue))
+            .attr("width", 0)
             .attr("height", b.height)
             .attr("class", "leftProgressLine")
             .attr("style", "fill: " + color + ";");
 
         var bl = leftProgressLine.node().getBoundingClientRect();
-        var rightProgressLine = container.append("rect")
-            .attr("x", bl.width)
-            .attr("y", 0)
-            .attr("width", b.width * (((_maxValue - _minValue) / _maxValue) - ((_valueLeft - _minValue) / _maxValue)))
-            .attr("height", b.height)
-            .attr("class", "rightProgressLine");
+        var leftValue = b.width * ((_valueLeft - _minValue) / _maxValue);
 
         var leftText = container.append("text")
             .attr("class", "progress-text")
@@ -44,6 +39,11 @@ function progressLine(parent, color) {
         container.transition()
             .duration(1000)
             .attr("opacity", 1.0);
+
+        leftProgressLine.transition()
+            .duration(1000)
+            .attr('width', leftValue);
+
     }
 
     make.minValue = function(_) {
