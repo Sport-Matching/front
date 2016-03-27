@@ -1,11 +1,4 @@
-<div class="loadingPart" ng-show="isLoading">
-    <div class="loadingPart-progress">
-        <md-progress-circular md-mode="indeterminate" md-diameter="150"></md-progress-circular>
-    </div>
-    <div class="loadingPart-description">
-        Loading...
-    </div>
-</div>
+<loading-directive ng-show="isLoading"></loading-directive>
 
 <div class="noContentFound" ng-show="isNoContentFound">
     No content found
@@ -69,7 +62,7 @@
         </div>
     </div>
 
-    <div class="content-part" id="player-stat" ng-show="showPlayerStatPart">
+    <div class="content-part" id="player-stat">
         <div class="content-part-title" id="player-stat-title">
             Statistics
         </div>
@@ -126,7 +119,7 @@
             Historic
         </div>
         <div class="content-part-cnt">
-            <no-content-part-found ng-show="!contentOnHistoryTournamentPart"/>
+            <no-content-part-found ng-show="!contentOnHistoryTournamentPart"></no-content-part-found>
             <div class="history-tournament" ng-show="contentOnHistoryTournamentPart">
                 <div class="history-tournament-name">
                     Roland Garros

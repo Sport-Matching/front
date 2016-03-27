@@ -4,7 +4,6 @@ angular.module('app')
             $scope.isLoading = true;
             $scope.isNoContentFound = true;
             $scope.showPlayerPart = true;
-            $scope.showPlayerStatPart = true;
             $scope.showPlayerPredictionPart = true;
             $scope.contentOnHistoryTournamentPart = false;
 
