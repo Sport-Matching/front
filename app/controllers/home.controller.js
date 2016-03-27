@@ -4,4 +4,4 @@ angular.module('app')
             $scope.isLoading = true;
             $scope.isNoContentFound = true;
             $scope.showPlayerPart = true;
-    }]);
+}]);
