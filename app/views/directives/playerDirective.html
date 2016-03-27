@@ -2,23 +2,5 @@
     <player-presentation-directive></player-presentation-directive>
     <player-stat-directive></player-stat-directive>
     <player-prediction-directive></player-prediction-directive>
-
-    <div class="content-part">
-        <div class="content-part-title">
-            Historic
-        </div>
-        <div class="content-part-cnt">
-            <no-content-part-found ng-show="!contentOnHistoryTournamentPart"></no-content-part-found>
-            <div class="history-tournament" ng-show="contentOnHistoryTournamentPart">
-                <div class="history-tournament-name">
-                    Roland Garros
-                </div>
-                <div class="history-tournament-match">
-                    <historyLine-directive player-name="Rafael Nadal" first-set="6" second-set="6" third-set="4" fourth-set="4"></historyLine-directive>
-                    <div class="history-tournament-match-separator"></div>
-                    <div class="history-tournament-match-player2"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <historic-directive></historic-directive>
 </div>
