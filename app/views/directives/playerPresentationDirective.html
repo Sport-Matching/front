@@ -5,10 +5,10 @@
     </div>
     <div class="content-part-cnt">
         <div id="player-pres-img-part">
-            <img src="./img/nadal.jpg" class="player-pres-img">
+            <img ng-src="{{ player.img }}" class="player-pres-img">
         </div>
         <div id="player-pres-name" class="text-part">
-            Rafael Nadal
+            {{ player.name }}
         </div>
         <div id="player-pres-details">
             <div class="player-pres-detail-part">
@@ -16,7 +16,7 @@
                     Nationality
                 </div>
                 <div class="player-pres-details-content text-part">
-                    ES
+                    {{ player.nation }}
                 </div>
             </div>
             <div class="player-pres-detail-part">
@@ -24,7 +24,7 @@
                     Age
                 </div>
                 <div class="player-pres-details-content text-part">
-                    29
+                    {{ player.age }}
                 </div>
             </div>
             <div class="player-pres-detail-part">
@@ -32,7 +32,7 @@
                     Birthday
                 </div>
                 <div class="player-pres-details-content text-part">
-                    3 June 1986
+                    {{ player.birthday }}
                 </div>
             </div>
             <div class="player-pres-detail-part">
@@ -40,7 +40,7 @@
                     Weight
                 </div>
                 <div class="player-pres-details-content text-part">
-                    1.85m
+                    {{ player.weight }}
                 </div>
             </div>
             <div class="player-pres-detail-part">
@@ -48,7 +48,7 @@
                     Favory Surface
                 </div>
                 <div class="player-pres-details-content text-part">
-                    Clay
+                    {{ player.favorySurface }}
                 </div>
             </div>
         </div>
