@@ -2,6 +2,7 @@ angular.module('app')
     .controller('HomeController', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$timeout',
         function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $timeout){
             $scope.isLoading = true;
+            $scope.isNoContentFound = true;
             $scope.showPlayerPart = true;
             $scope.showPlayerStatPart = true;
             $scope.showPlayerPredictionPart = true;
