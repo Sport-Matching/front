@@ -1,10 +1,10 @@
 angular.module('app')
     .controller('HomeController', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$timeout',
         function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $timeout){
+            $scope.isLoading = true;
             $scope.showPlayerPart = true;
             $scope.showPlayerStatPart = true;
             $scope.showPlayerPredictionPart = true;
-
             $scope.contentOnHistoryTournamentPart = false;
 
             function generatePlayerStatView(color) {
