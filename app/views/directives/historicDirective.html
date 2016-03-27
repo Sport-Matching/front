@@ -5,19 +5,21 @@
     <div class="content-part-cnt">
         <no-content-part-found ng-show="!contentOnHistoryPart"></no-content-part-found>
         <div class="history-tournament" ng-show="contentOnHistoryPart">
-            <div class="history-tournament-name">
-                Roland Garros
+            <div ng-repeat="histos in tabHistoric">
+                <div class="history-tournament-name">
+                    {{ histos.tournament }}
+                </div>
+                <div ng-repeat="h in histos.matchs">
+                    <div class="history-tournament-date">
+                        {{ h.date }}
+                    </div>
+                    <div class="history-tournament-match">
+                        <history-line-directive player-name="{{ h.player1 }}" first-set="{{ h.player1Set1 }}" second-set="{{ h.player1Set2 }}" third-set="{{ h.player1Set3 }}" fourth-set="{{ player1Set4 }}" fifth-set="{{ h.player1Set5 }}"></history-line-directive>
+                        <div class="history-tournament-match-separator"></div>
+                        <history-line-directive player-name="{{ h.player2 }}" first-set="{{ h.player2Set1 }}" second-set="{{ h.player2Set2 }}" third-set="{{ h.player2Set3 }}" fourth-set="{{ player2Set4 }}" fifth-set="{{ h.player2Set5 }}"></history-line-directive>
+                    </div>
+                </div>
             </div>
-            <div>
-                <div class="history-tournament-date">
-                    27/05/2015
-                </div>
-                <div class="history-tournament-match">
-                    <history-line-directive player-name="Rafael NADAL" first-set="6" second-set="4" third-set="4"></history-line-directive>
-                    <div class="history-tournament-match-separator"></div>
-                    <history-line-directive player-name="Roger FEDERER" first-set="4" second-set="6" third-set="6"></history-line-directive>
-                </div>
-            <div>
         </div>
     </div>
 </div>
