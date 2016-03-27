@@ -5,6 +5,8 @@ angular.module('app')
             $scope.showPlayerStatPart = true;
             $scope.showPlayerPredictionPart = true;
 
+            $scope.contentOnHistoryTournamentPart = false;
+
             function generatePlayerStatView(color) {
                 $timeout(function() {
                     radialProgress(document.getElementById('player-stat-content-body-radial-main'), color)
