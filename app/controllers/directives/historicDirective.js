@@ -6,7 +6,7 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
-        scope.contentOnHistoryPart = false;
+        scope.contentOnHistoryPart = true;
     },
     templateUrl: 'views/directives/historicDirective.html'
   };
