@@ -5,15 +5,14 @@ angular.module('app').controller('NavBarController', ['$scope', '$state', '$log'
     };*/
 
     $scope.querySearch = function(search) {
-        console.log(search);
         var tab = [];
-        searchInterface.search(search).then(function(result){
+        return searchInterface.search(search).then(function(result){
             console.log(result);
             tab = result.Data.map(function(e){return e.Name});
-            console.log(tab)
+            return tab;
         }).catch(function(result){
             console.error(result);
+            return [];
         });
-        return tab;
     }
 }]);
