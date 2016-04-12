@@ -5,5 +5,5 @@
 (function () {
     'use strict';
 
-    angular.module('appSdk', []);
+    angular.module('appSdk', ['appServices', 'appInterfaces']);
 })();
