@@ -6,10 +6,7 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
-        var tabPrediction = [{date: "22/05/2017 in Roland Garros", predictions: [{id: 1, player1: "Rafael NADAL", player2: "Novak DJOKOVIC", azurePlayer1: 45, twitterPlayer1: 65, firstSetPlayer1: 22},
-                                                                                 {id: 2, player1: "Rafael NADAL", player2: "Roger FEDERER", azurePlayer1: 44, twitterPlayer1: 32, firstSetPlayer1: 12}]},
-                            {date: "23/05/2017 in Roland Garros", predictions: [{id: 3, player1: "Rafael NADAL", player2: "Novak DJOKOVIC", azurePlayer1: 12, twitterPlayer1: 99, firstSetPlayer1: 27},
-                                                                                {id: 4, player1: "Rafael NADAL", player2: "Roger FEDERER", azurePlayer1: 55, twitterPlayer1: 33, firstSetPlayer1: 88}]}];
+        var tabPrediction = JSON.parse(attrs.predicts);
         scope.predictions = tabPrediction;
 
         function generateAPlayerPredictionView(predict) {
@@ -38,7 +35,7 @@ angular.module('app')
             }, 0);
         }
 
-        scope.contentOnPredictionPart = tabPrediction.lenght !== 0;
+        scope.contentOnPredictionPart = tabPrediction.length !== 0;
         $timeout(function () {
             for (u in tabPrediction) {
                 for (i in tabPrediction[u].predictions) {

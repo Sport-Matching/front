@@ -1,7 +1,8 @@
 angular.module('app')
     .controller('HomeController', ['$scope',
         function($scope){
-            $scope.isLoading = true;
-            $scope.isNoContentFound = true;
-            $scope.showPlayerPart = true;
+            $scope.isLoading = false;
+            $scope.isNoContentFound = false;
+            $scope.showPlayerPart = false;
+            $scope.showVSPart = true;
 }]);
