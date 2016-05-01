@@ -6,6 +6,8 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
+        var stat = JSON.parse(attrs.stats);
+
         function generatePlayerStatView(color, valueMatchWin, valueQuartWin, valueDemiWin, valueFinalWin, valueFirstSetWin) {
             $timeout(function() {
                 radialProgress(document.getElementById('player-stat-content-body-radial-main'), color)
@@ -38,17 +40,17 @@ angular.module('app')
         }
 
         scope.clickHardCourtsButton = function() {
-            generatePlayerStatView("rgb(75, 165, 240)", 25, 28, 23, 12, 33);
+            generatePlayerStatView("rgb(75, 165, 240)", stat.hardcourt.valueMatchWin, stat.hardcourt.valueQuartWin, stat.hardcourt.valueDemiWin, stat.hardcourt.valueFinalWin, stat.hardcourt.valueFirstSetWin);
         };
         scope.clickClayCourtsButton = function() {
-            generatePlayerStatView("rgb(215, 125, 90)", 55, 99, 66, 1, 24);
+            generatePlayerStatView("rgb(215, 125, 90)", stat.claycourt.valueMatchWin, stat.claycourt.valueQuartWin, stat.claycourt.valueDemiWin, stat.claycourt.valueFinalWin, stat.claycourt.valueFirstSetWin);
         };
         scope.clickGrassCourtsButton = function() {
-            generatePlayerStatView("rgb(135, 165, 95)", 14, 79, 100, 9, 77);
+            generatePlayerStatView("rgb(135, 165, 95)", stat.grasscourt.valueMatchWin, stat.grasscourt.valueQuartWin, stat.grasscourt.valueDemiWin, stat.grasscourt.valueFinalWin, stat.grasscourt.valueFirstSetWin);
         };
 
         $timeout(function () {
-            generatePlayerStatView("rgb(75, 165, 240)", 25, 28, 23, 12, 33);
+            generatePlayerStatView("rgb(75, 165, 240)", stat.hardcourt.valueMatchWin, stat.hardcourt.valueQuartWin, stat.hardcourt.valueDemiWin, stat.hardcourt.valueFinalWin, stat.hardcourt.valueFirstSetWin);
         }, 0);
     },
     templateUrl: 'views/directives/playerStatDirective.html'

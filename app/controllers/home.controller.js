@@ -3,6 +3,6 @@ angular.module('app')
         function($scope){
             $scope.isLoading = false;
             $scope.isNoContentFound = false;
-            $scope.showPlayerPart = false;
-            $scope.showVSPart = true;
+            $scope.showPlayerPart = true;
+            $scope.showVSPart = false;
 }]);
