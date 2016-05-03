@@ -14,13 +14,13 @@
                         {{ h.date }}
                     </div>
                     <div class="history-tournament-match">
-                        <history-line-directive player-name="{{ h.player1 }}" first-set="{{ h.player1Set1 }}" second-set="{{ h.player1Set2 }}" third-set="{{ h.player1Set3 }}" fourth-set="{{ player1Set4 }}" fifth-set="{{ h.player1Set5 }}"></history-line-directive>
+                        <history-line-directive player-name="{{ h.player1 }}" first-set="{{ h.player1Set1 }}" second-set="{{ h.player1Set2 }}" third-set="{{ h.player1Set3 }}" fourth-set="{{ h.player1Set4 }}" fifth-set="{{ h.player1Set5 }}"></history-line-directive>
                         <div class="history-tournament-match-separator"></div>
-                        <history-line-directive player-name="{{ h.player2 }}" first-set="{{ h.player2Set1 }}" second-set="{{ h.player2Set2 }}" third-set="{{ h.player2Set3 }}" fourth-set="{{ player2Set4 }}" fifth-set="{{ h.player2Set5 }}"></history-line-directive>
+                        <history-line-directive player-name="{{ h.player2 }}" first-set="{{ h.player2Set1 }}" second-set="{{ h.player2Set2 }}" third-set="{{ h.player2Set3 }}" fourth-set="{{ h.player2Set4 }}" fifth-set="{{ h.player2Set5 }}"></history-line-directive>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="historyBottomSeparator"></div>
+        <div class="historyBottomSeparator" ng-show="contentOnHistoryPart"></div>
     </div>
 </div>
