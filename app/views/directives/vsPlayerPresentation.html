@@ -1,2 +1,30 @@
-<div>
+<div class="content-part">
+    <div class="separator-top-pres"></div>
+    <div class="content-part-title-center">
+        VS
+    </div>
+    <div class="content-part-cnt">
+        <div class="vs-pres-top">
+            <div class="vs-pres-top-img">
+                <div class="vs-pres-top-img-left">
+                    <img ng-src="{{ players.player1.img }}" class="player-pres-img">
+                </div>
+                <div class="vs-pres-top-img-sep"></div>
+                <div class="vs-pres-top-img-right">
+                    <img ng-src="{{ players.player2.img }}" class="player-pres-img">
+                </div>
+            </div>
+            <div class="vs-pres-top-name">
+                <div class="vs-pres-top-name-str">
+                    {{ players.player1.name }}
+                </div>
+                <div class="vs-pres-top-name-middle">
+                    vs
+                </div>
+                <div class="vs-pres-top-name-str">
+                    {{ players.player2.name }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
