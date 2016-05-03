@@ -32,8 +32,10 @@ angular.module('app')
                         .value(value.valueFinalWin)
                         .render();
 
-                    /*progressLine(document.getElementById(id + 'player-stat-content-body-linear-cnt'), color, false, "rgb(215, 215, 215)")
-                        .valueLeft(valueFirstSetWin);*/
+                    progressLine(document.getElementById(id + '-vs-linear-cnt'), color, false, "rgb(215, 215, 215)")
+                        .valueLeft(value.valueFirstSetWin);
+
+                    console.log(value.valueFirstSetWin);
                 }, 0);
             }
 
