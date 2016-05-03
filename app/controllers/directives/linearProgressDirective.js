@@ -6,7 +6,17 @@ angular.module('app')
     scope: {},
     link: function(scope, element, attrs) {
         scope.title = attrs.linearTitle;
-        scope.idLinear = attrs.idLinear;
+        if (attrs.idLinear !== undefined) {
+            scope.tabElt = [{
+                id: attrs.idLinear,
+                showSubTitle: false,
+                subTitle: ""
+            }];
+        } else if (attrs.tabLinear !== undefined) {
+            scope.tabElt = JSON.parse(attrs.tabLinear);
+        } else {
+            scope.eltTab = [];
+        }
     },
     templateUrl: 'views/directives/linearProgressDirective.html'
   };

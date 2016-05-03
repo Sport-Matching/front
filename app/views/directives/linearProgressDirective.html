@@ -2,6 +2,11 @@
     <div class="linear-title">
         {{ title }}
     </div>
-    <div class="linear-cnt" id="{{ idLinear }}">
+    <div ng-repeat="elt in tabElt">
+        <div class="linear-cnt" id="{{ elt.id }}">
+        </div>
+        <div class="subtitle-bar" ng-show="elt.showSubTitle">
+            {{ elt.subTitle }}
+        </div>
     </div>
 </div>

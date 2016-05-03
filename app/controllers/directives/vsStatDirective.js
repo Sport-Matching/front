@@ -10,6 +10,19 @@ angular.module('app')
             var stat = JSON.parse(attrs.stats);
             scope.stats = stat;
 
+            scope.linearStat = [
+                {
+                    id: "player1-vs-linear-cnt",
+                    showSubTitle: true,
+                    subTitle: stat.name.player1
+                },
+                {
+                    id: "player2-vs-linear-cnt",
+                    showSubTitle: true,
+                    subTitle: stat.name.player2
+                }
+            ];
+
             function generatePlayerStatView(color, id, value) {
                 $timeout(function() {
                     radialProgress(document.getElementById(id + '-vs-win'), color)
@@ -34,8 +47,6 @@ angular.module('app')
 
                     progressLine(document.getElementById(id + '-vs-linear-cnt'), color, false, "rgb(215, 215, 215)")
                         .valueLeft(value.valueFirstSetWin);
-
-                    console.log(value.valueFirstSetWin);
                 }, 0);
             }
 
