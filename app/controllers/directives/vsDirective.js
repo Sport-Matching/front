@@ -6,7 +6,55 @@ angular.module('app')
     scope: {},
     link: function(scope, element, attrs) {
         scope.stats = {
-        };
+                    hardcourt: {
+                        player1: {
+                            valueMatchWin: 25,
+                            valueQuartWin: 28,
+                            valueDemiWin: 23,
+                            valueFinalWin: 12,
+                            valueFirstSetWin: 33
+                        },
+                        player2: {
+                            valueMatchWin: 88,
+                            valueQuartWin: 77,
+                            valueDemiWin: 52,
+                            valueFinalWin: 22,
+                            valueFirstSetWin: 77
+                        }
+                    },
+                    claycourt: {
+                        player1: {
+                            valueMatchWin: 44,
+                            valueQuartWin: 87,
+                            valueDemiWin: 65,
+                            valueFinalWin: 30,
+                            valueFirstSetWin: 42
+                        },
+                        player2: {
+                            valueMatchWin: 63,
+                            valueQuartWin: 99,
+                            valueDemiWin: 88,
+                            valueFinalWin: 77,
+                            valueFirstSetWin: 66
+                        }
+                    },
+                    grasscourt: {
+                        player1: {
+                            valueMatchWin: 41,
+                            valueQuartWin: 22,
+                            valueDemiWin: 12,
+                            valueFinalWin: 1,
+                            valueFirstSetWin: 88
+                        },
+                        player2: {
+                            valueMatchWin: 55,
+                            valueQuartWin: 77,
+                            valueDemiWin: 45,
+                            valueFinalWin: 32,
+                            valueFirstSetWin: 71
+                        }
+                    }
+                };
 
         scope.players = {
             player1: {
