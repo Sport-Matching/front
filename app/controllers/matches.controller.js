@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('PlayerController', ['$scope', '$stateParams',
+    .controller('MatchesController', ['$scope', '$stateParams',
         function($scope, $stateParams){
-            $scope.player = $stateParams.player;
+            $scope.players = $stateParams.players;
 }]);

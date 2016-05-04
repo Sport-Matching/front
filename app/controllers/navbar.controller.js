@@ -16,7 +16,11 @@ angular.module('app').controller('NavBarController', ['$scope', '$state', '$log'
                 return;
             }
             if (item.Player1 != null) {
-                
+                $state.go('matches', {
+                    player1Id: item.Player1.Id,
+                    player2Id: item.Player2.Id,
+                    players: item
+                });
             }
             else {
                 $state.go('player', {

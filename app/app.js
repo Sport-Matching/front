@@ -25,6 +25,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller:'HomeController'
         });
 
+        $stateProvider.state('matches',{
+            url:'/matches/:player1Id/vs/:player2Id',
+            title: 'Player VS player',
+            templateUrl:'views/matches.html',
+            controller:'MatchesController',
+            params: {
+                'players': null
+            }
+        });
+
         $stateProvider.state('player',{
             url:'/player/:playerId',
             title: 'Player',

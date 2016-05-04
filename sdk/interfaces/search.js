@@ -30,7 +30,7 @@
                 });
 
                 if (isMatch) {
-                    var sp = text.split(" vs ");
+                    var sp = text.split(/ vs ?/);
                     if (sp.length == 1) {
                         sp.push("");
                     }
