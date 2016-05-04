@@ -22,8 +22,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url:'/',
             title: 'Home',
             templateUrl:'views/home.html',
-            controller:'HomeController',
-            revolve:{}
+            controller:'HomeController'
+        });
+
+        $stateProvider.state('player',{
+            url:'/player/:playerId',
+            title: 'Player',
+            templateUrl:'views/player.html',
+            controller:'PlayerController',
+            params: {
+                'player': null
+            }
         });
 
         $urlRouterProvider.otherwise('/');

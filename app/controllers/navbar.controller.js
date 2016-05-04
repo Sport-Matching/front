@@ -1,11 +1,12 @@
-angular.module('app').controller('NavBarController', ['$scope', '$state', '$log', 'searchInterface',
-    function($scope, $state, $log, searchInterface) {
+angular.module('app').controller('NavBarController', ['$scope', '$state', '$log', 'searchInterface', 'errorDialogMd',
+    function($scope, $state, $log, searchInterface, errorDialogMd) {
 
         $scope.querySearch = function(search) {
             return searchInterface.search(search).then(function(result){
                 return result.Data;
-            }).catch(function(result) {
-                console.error(result);
+            }).catch(function(error) {
+                console.error(error);
+                errorDialogMd.errorDialog(error);
                 return [];
             });
         };
@@ -18,7 +19,10 @@ angular.module('app').controller('NavBarController', ['$scope', '$state', '$log'
                 
             }
             else {
-
+                $state.go('player', {
+                    playerId: item.Id,
+                    player: item
+                });
             }
             console.log(item);
         };
