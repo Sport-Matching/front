@@ -1,18 +1,25 @@
 angular.module('app').controller('NavBarController', ['$scope', '$state', '$log', 'searchInterface',
     function($scope, $state, $log, searchInterface) {
-    /*$scope.search = {
-        text: ""
-    };*/
 
-    $scope.querySearch = function(search) {
-        var tab = [];
-        return searchInterface.search(search).then(function(result){
-            console.log(result);
-            tab = result.Data.map(function(e){return e.Name});
-            return tab;
-        }).catch(function(result){
-            console.error(result);
-            return [];
-        });
-    }
+        $scope.querySearch = function(search) {
+            return searchInterface.search(search).then(function(result){
+                return result.Data;
+            }).catch(function(result) {
+                console.error(result);
+                return [];
+            });
+        };
+
+        $scope.goTo = function (item) {
+            if (item == null) {
+                return;
+            }
+            if (item.Player1 != null) {
+                
+            }
+            else {
+
+            }
+            console.log(item);
+        };
 }]);

@@ -11,42 +11,73 @@
 
             var searchInterface = {};
 
-            searchInterface.search = function(text){
+            searchInterface.search = function(text) {
 
-                if (text === null){
-                    var deferred = $q.defer();
-                    deferred.reject("bad null value");
-                    return deferred.promise};
+                var deferred = $q.defer();
+
+                if (text == null) {
+                    text = "";
+                }
+                text = angular.lowercase(text);
+
                 var tab = text.split(" ");
                 var isMatch = false;
                 tab.forEach(function(e){
 
-                    if (angular.lowercase(e) == 'vs') {
+                    if (e == 'vs') {
                         isMatch = true;
                     }
                 });
-                if (isMatch){
-                    var sp = text.split(" vs ");
-                    if (sp.length < 2 || sp.length > 2) {
-                        var deferred2 = $q.defer();
-                        deferred2.reject("bad null split");
-                        return deferred2.promise};
-                    var player1 = -1;
-                    var player2 = -1;
-                    var resultation = $q.defer();
-                   player.search(0,10, sp[1].trim()).then(function(result){
-                       var provi = result.Data.map(function(e){return {'Name':sp[0].trim()+" vs "+e.Name}});
-                       provi = {Data: provi};
-                       resultation.resolve(provi);
 
-                            //matches.search(player1,player2, 0,10).then(function(result){
-                            //    deferred.resolve(result);
-                            //});
-                   });
-                    return resultation.promise;
+                if (isMatch) {
+                    var sp = text.split(" vs ");
+                    if (sp.length == 1) {
+                        sp.push("");
+                    }
+                    else if (sp.length > 2) {
+                        sp = [text];
+                    }
+
+                    player.search(0, 1, sp[0].trim()).then(function (player1) {
+                        if (player1.Data.length > 0) {
+                            player1 = player1.Data[0];
+                            player.search(0, 10, sp[1].trim()).then(function (player2) {
+                                var data = {
+                                    Count: player2.Count,
+                                    Data: []
+                                };
+
+                                player2.Data.forEach(function(item)
+                                {
+                                    data.Data.push({
+                                        Player1: player1,
+                                        Player2: item,
+                                        Text: player1.Name + " VS " + item.Name
+                                    });
+                                });
+
+                                deferred.resolve(data);
+                            }, deferred.reject);
+                        }
+                        else {
+                            deferred.resolve({
+                                Count: 0,
+                                Data: []
+                            });
+                        }
+                    }, deferred.reject);
                 }
-                else
-                    return player.search(0, 10, text);
+                else {
+                    player.search(0, 10, text).then(function(data)
+                    {
+                        data.Data.forEach(function(item)
+                        {
+                            item.Text = item.Name;
+                        });
+                        deferred.resolve(data);
+                    }, deferred.reject);
+                }
+                return deferred.promise;
             };
 
             return searchInterface;
