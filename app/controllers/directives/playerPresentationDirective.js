@@ -5,7 +5,11 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
-        scope.player = JSON.parse(attrs.player);
+        scope.$watch(function() {
+            return element.attr('desc');
+        }, function(newValue) {
+            scope.player = JSON.parse(newValue);
+        });
     },
     templateUrl: 'views/directives/playerPresentationDirective.html'
   };

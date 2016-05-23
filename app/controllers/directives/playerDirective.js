@@ -5,9 +5,22 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
-        scope.contentOnHistoryTournamentPart = false;
+        scope.$watch(function() {
+            return element.attr('player');
+        }, function(newValue) {
+            if (attrs.player !== undefined) {
+                scope.player = JSON.parse(newValue);
+            } else {
+                scope.player = {
+                    description: {},
+                    predicts: [],
+                    stats: {},
+                    histo: []
+                };
+            }
+        });
 
-        scope.player = {
+        /*scope.player = {
             img: "./img/nadal.jpg",
             name: "Rafael NADAL",
             nation: "ES",
@@ -86,7 +99,7 @@ angular.module('app')
                     }
                 };
 
-        scope.historics = [
+        scope.histo = [
             {
                 tournament: "Winbledon",
                 matchs: [
@@ -145,7 +158,7 @@ angular.module('app')
                     }
                 ]
             }
-        ];
+        ];*/
     },
     templateUrl: 'views/directives/playerDirective.html'
   };
