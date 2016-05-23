@@ -17,7 +17,6 @@ angular.module('app')
                 playerInterface.get(playerId, function(success, error, data) {
                     if (success && data !== undefined) {
                         $scope.isLoading = false;
-                        console.log("data: receive");
                         $scope.player = data;
                         $scope.isNoContentFound = false;
                         $scope.haveContent = true;

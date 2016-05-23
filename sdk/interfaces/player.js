@@ -30,7 +30,7 @@
                             for (i = 0; i < data.Data.Data.length; i += 1) {
                                 var t = data.Data.Data[i];
                                 var tournamentDate = new Date(t.Date);
-                                var tournamentName = t.Tournament.Name;
+                                var tournamentName = t.Tournament.Name + " " + t.Tournament.Year;
 
                                 var s = {};
                                 var u = 0;
@@ -63,7 +63,7 @@
                                     }
                                 }
                                 var m = {
-                                    date: $filter('date')(tournamentDate,'d MMMM yyyy'),
+                                    date: $filter('date')(tournamentDate,'d MMM yyyy'),
                                     player1: t.Player1.Name,
                                     player2: t.Player2.Name,
                                     player1Set1: s.player1Set1,
@@ -79,7 +79,7 @@
                                 };
 
                                 var f = function(tInstance) {
-                                    return tInstance.tournament == tournamentName;
+                                    return tInstance.tournament == tournamentName && tInstance.year == t.Tournament.Year;
                                 };
                                 var
                                 p = tabHisto.find(f);
@@ -88,6 +88,7 @@
                                 } else {
                                     tabHisto.push({
                                         tournament: tournamentName,
+                                        year: t.Tournament.Year,
                                         matchs: [m]
                                     });
                                 }
@@ -99,7 +100,7 @@
                                     name: descriptionResponse.Data.Player.Name,
                                     nation: descriptionResponse.Data.Player.Country,
                                     age: playerAge,
-                                    birthday: $filter('date')(playerBirthDate,'d MMMM yyyy'),
+                                    birthday: $filter('date')(playerBirthDate,'d MMM yyyy'),
                                     weight: (descriptionResponse.Data.Player.Weight / 1000) + "kg",
                                     favorySurface: "?"
                                 },
