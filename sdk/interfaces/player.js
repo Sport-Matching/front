@@ -16,6 +16,19 @@
 
             playerInterface.getAll = player.getAll;
 
+            playerInterface.get = function(id, completion) {
+                player.getPlayerDescription(id, function(success, error, data) {
+                    if (success) {
+                        var descriptionResponse = data;
+                        player.getPlayerHistory(id, function(success, error, data) {
+                            completion(success, error, descriptionResponse, data);
+                        });
+                    } else {
+                        completion(success, error, undefined, undefined);
+                    }
+                })
+            };
+
             return playerInterface;
         }]);
 })();

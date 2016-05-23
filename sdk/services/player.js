@@ -46,6 +46,28 @@
                 return deferred.promise;
             };
 
+            player.getPlayerDescription = function(id, completion) {
+                $http({
+                    method: 'GET',
+                    url: '/api/players/' + id
+                }).then(function successCallback(response) {
+                    completion(true, undefined, response.data);
+                }, function errorCallback(response) {
+                    completion(false, response, undefined);
+                });
+            };
+
+            player.getPlayerHistory = function(id, completion) {
+                $http({
+                    method: 'GET',
+                    url: '/api/players/' + id + '/matches'
+                }).then(function successCallback(response) {
+                    completion(true, undefined, response.data);
+                }, function errorCallback(response) {
+                    completion(false, response, undefined);
+                });
+            };
+
             return player;
         }]);
 })();

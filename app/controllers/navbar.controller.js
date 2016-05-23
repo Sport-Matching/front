@@ -6,7 +6,7 @@ angular.module('app').controller('NavBarController', ['$scope', '$state', '$log'
                 return result.Data;
             }).catch(function(error) {
                 console.error(error);
-                errorDialogMd.errorDialog(error);
+                //errorDialogMd.errorDialog(error);
                 return [];
             });
         };
@@ -28,6 +28,5 @@ angular.module('app').controller('NavBarController', ['$scope', '$state', '$log'
                     player: item
                 });
             }
-            console.log(item);
         };
 }]);
