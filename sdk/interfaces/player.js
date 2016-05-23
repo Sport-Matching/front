@@ -83,10 +83,6 @@
                                 };
                                 var
                                 p = tabHisto.find(f);
-                                console.log("##############");
-                                console.log(p);
-                                console.log(tabHisto);
-                                console.log(tournamentName);
                                 if (p !== undefined) {
                                     p.matchs.push(m);
                                 } else {
@@ -96,8 +92,6 @@
                                     });
                                 }
                             }
-                            console.log(data.Data);
-                            console.log(tabHisto);
 
                             var response = {
                                 description: {
