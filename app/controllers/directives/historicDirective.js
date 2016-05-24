@@ -10,7 +10,7 @@ angular.module('app')
                 return element.attr('hist');
             }, function(newValue) {
                 var tabHistoric = [];
-                if (attrs.hist !== undefined) {
+                if (attrs.hist !== undefined && attrs.hist != "") {
                     tabHistoric = JSON.parse(attrs.hist);
                 }
                 scope.contentOnHistoryPart = tabHistoric.length !== 0;

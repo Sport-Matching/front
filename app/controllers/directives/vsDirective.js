@@ -13,8 +13,6 @@ angular.module('app')
                 } else {
                     scope.p = {};
                 }
-                console.log("############ p");
-                console.log(scope.p);
             });
             /*scope.stats = {
                 name: {
