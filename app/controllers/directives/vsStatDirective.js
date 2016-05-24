@@ -6,7 +6,7 @@ angular.module('app')
     scope: {},
     link: function(scope, element, attrs) {
         scope.stat = {};
-        if (attrs.stats !== undefined) {
+        if (attrs.stats !== undefined && attrs.stats != "") {
             var stat = JSON.parse(attrs.stats);
             scope.stats = stat;
 
