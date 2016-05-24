@@ -5,11 +5,15 @@ angular.module('app')
     transclude: true,
     scope: {},
     link: function(scope, element, attrs) {
-        if (attrs.players !== undefined) {
-            scope.players = JSON.parse(attrs.players);
-        } else {
-            scope.players = {};
-        }
+        scope.$watch(function() {
+            return element.attr('players');
+        }, function(newValue) {
+            if (attrs.players !== undefined && attrs.players != "") {
+                scope.players = JSON.parse(attrs.players);
+            } else {
+                scope.players = {};
+            }
+        });
     },
     templateUrl: 'views/directives/vsPlayerPresentation.html'
   };

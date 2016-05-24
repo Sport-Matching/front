@@ -1,1 +1,3 @@
-<vs-directive ></vs-directive>
+<loading-directive ng-show="isLoading"></loading-directive>
+<no-content-directive ng-show="isNoContentFound"></no-content-directive>
+<vs-directive ng-show="haveContent" players="{{ players }}"></vs-directive>

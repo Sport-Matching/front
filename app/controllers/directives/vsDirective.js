@@ -5,10 +5,21 @@ angular.module('app')
         transclude: true,
         scope: {},
         link: function(scope, element, attrs) {
-            scope.stats = {
+            scope.$watch(function() {
+                return element.attr('players');
+            }, function(newValue) {
+                if (newValue !== undefined && newValue != "") {
+                    scope.p = JSON.parse(newValue);
+                } else {
+                    scope.p = {};
+                }
+                console.log("############ p");
+                console.log(scope.p);
+            });
+            /*scope.stats = {
                 name: {
                     player1: "Rafaël NADAL",
-                    player2: "Roger FEDERER"    
+                    player2: "Roger FEDERER"
                 },
                 hardcourt: {
                     player1: {
@@ -147,7 +158,7 @@ angular.module('app')
                         }
                     ]
                 }
-            ];
+            ];*/
         },
         templateUrl: 'views/directives/vsDirective.html'
     };

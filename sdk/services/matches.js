@@ -31,6 +31,16 @@
                 return deferred.promise;
             };
 
+            matches.get = function(player1_vs, player2_id, completion) {
+                $http({
+                    method: 'GET',
+                    url: '/api/matches/' + player1_vs + '/vs/' + player2_id
+                }).then(function successCallback(response) {
+                    completion(true, undefined, response.data);
+                }, function errorCallback(response) {
+                    completion(false, response, undefined);
+                });
+            };
             return matches;
         }]);
 })();
