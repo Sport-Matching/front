@@ -22,10 +22,9 @@
                     var descriptionResponse = data;
                     player.getPlayerHistory(id, function(success, error, data) {
                         if (success) {
-                            console.log(descriptionResponse);
                             var desc = helper.parsePlayerDescriptionResponse(descriptionResponse);
                             var tabHisto = helper.parseHistoryList(data.Data);
-                            var stat = helper.generateStat(desc.Name, data.Data.Data);
+                            var stat = helper.generateStat(desc.name, data.Data.Data);
 
                             var response = {
                                 description: desc,

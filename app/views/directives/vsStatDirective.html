@@ -35,7 +35,8 @@
                 </div>
             </div>
             <div class="vs-stat-detail">
-                <div class="radial-content" id="vs-win"></div>
+                <div class="radial-content" id="vs-win" ng-show="contentOnWinVSStat"></div>
+                <no-content-part-found ng-show="!contentOnWinVSStat"></no-content-part-found>
             </div>
         </div>
         <linear-progress-directive linear-title="Avg number game in the first set" tab-linear="{{ linearStatAvg }}">

@@ -9,8 +9,8 @@ angular.module('app')
         scope.$watch(function() {
             return element.attr('stats');
         }, function(newValue) {
-            if (attrs.stats !== undefined && attrs.stats != "") {
-                var stat = JSON.parse(attrs.stats);
+            if (newValue !== undefined && newValue != "") {
+                var stat = JSON.parse(newValue);
                 scope.stats = stat;
 
                 scope.linearStatAvg = [
@@ -55,47 +55,42 @@ angular.module('app')
                     }, 0);
                 }
 
+                function generateVSStat(color, value) {
+                    $timeout(function() {
+                        if (value >= 0) {
+                            scope.contentOnWinVSStat = true;
+                            radialProgress(document.getElementById('vs-win'), color)
+                                .diameter(180)
+                                .label(vsLabel)
+                                .value(value)
+                                .render();
+                        } else {
+                            scope.contentOnWinVSStat = false;
+                        }
+                    }, 0);
+                }
+
                 var vsLabel = stat.name.player1 + " win VS";
                 scope.clickHardCourtsButton = function() {
                     generatePlayerStatView("rgb(75, 165, 240)", "player1", stat.hard.player1);
                     generatePlayerStatView("rgb(75, 165, 240)", "player2", stat.hard.player2);
-
-                    radialProgress(document.getElementById('vs-win'), "rgb(75, 165, 240)")
-                        .diameter(180)
-                        .label(vsLabel)
-                        .value(stat.hard.vsWin)
-                        .render();
+                    generateVSStat("rgb(75, 165, 240)", stat.hard.winVS);
                 };
                 scope.clickClayCourtsButton = function() {
                     generatePlayerStatView("rgb(215, 125, 90)", "player1", stat.clay.player1);
                     generatePlayerStatView("rgb(215, 125, 90)", "player2", stat.clay.player2);
-
-                    radialProgress(document.getElementById('vs-win'), "rgb(215, 125, 90)")
-                        .diameter(180)
-                        .label(vsLabel)
-                        .value(stat.clay.vsWin)
-                        .render();
+                    generateVSStat("rgb(215, 125, 90)", stat.clay.winVS);
                 };
                 scope.clickGrassCourtsButton = function() {
                     generatePlayerStatView("rgb(135, 165, 95)", "player1", stat.grass.player1);
                     generatePlayerStatView("rgb(135, 165, 95)", "player2", stat.grass.player2);
-
-                    radialProgress(document.getElementById('vs-win'), "rgb(135, 165, 95)")
-                        .diameter(180)
-                        .label(vsLabel)
-                        .value(stat.grass.vsWin)
-                        .render();
+                    generateVSStat("rgb(135, 165, 95)", stat.grass.winVS);
                 };
 
                 $timeout(function () {
                     generatePlayerStatView("rgb(75, 165, 240)", "player1", stat.hard.player1);
                     generatePlayerStatView("rgb(75, 165, 240)", "player2", stat.hard.player2);
-
-                    radialProgress(document.getElementById('vs-win'), "rgb(75, 165, 240)")
-                        .diameter(180)
-                        .label(vsLabel)
-                        .value(stat.hard.vsWin)
-                        .render();
+                    generateVSStat("rgb(75, 165, 240)", stat.hard.winVS);
                 }, 0);
             } else {
                 scope.stat = {};
