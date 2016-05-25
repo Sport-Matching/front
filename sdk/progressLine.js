@@ -5,6 +5,9 @@ function progressLine(parent, leftcolor, showRightValue, rightColor) {
     var _valueLeft = 50;
     var _minValue = 0, _maxValue = 100;
 
+    var _leftText = "";
+    var _rightText = "";
+
     function make() {
         var tabOldSVG = d3.select(parent).selectAll("svg");
         tabOldSVG.each(function(index, el) {
@@ -39,7 +42,8 @@ function progressLine(parent, leftcolor, showRightValue, rightColor) {
             .attr("y", (_fontSize / 3) + (_height / 2))
             .attr("x", 25)
             .style({"font-size": _fontSize + "px"})
-            .text((((_valueLeft - _minValue) / _maxValue) * 100) + "%");
+            .text(_leftText);
+            //.text((((_valueLeft - _minValue) / _maxValue) * 100) + "%");
 
         if (showRightValue === true) {
             var rightText = container.append("text")
@@ -47,7 +51,8 @@ function progressLine(parent, leftcolor, showRightValue, rightColor) {
                 .attr("y", (_fontSize / 3) + (_height / 2))
                 .attr("x", _width - 50)
                 .style({"font-size": _fontSize + "px"})
-                .text((100 - (((_valueLeft - _minValue) / _maxValue) * 100)) + "%");
+                .text(_rightText);
+                //.text((100 - (((_valueLeft - _minValue) / _maxValue) * 100)) + "%");
         }
 
 
@@ -103,6 +108,20 @@ function progressLine(parent, leftcolor, showRightValue, rightColor) {
     make.fontSize = function(_) {
         if (!arguments.length) return _fontSize;
         _fontSize = _;
+        make();
+        return make;
+    }
+
+    make.leftText = function(_) {
+        if (!arguments.length) return _leftText;
+        _leftText = _;
+        make();
+        return make;
+    }
+
+    make.rightText = function(_) {
+        if (!arguments.length) return _rightText;
+        _rightText = _;
         make();
         return make;
     }

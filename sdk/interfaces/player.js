@@ -22,6 +22,7 @@
                     var descriptionResponse = data;
                     player.getPlayerHistory(id, function(success, error, data) {
                         if (success) {
+                            console.log(descriptionResponse);
                             var desc = helper.parsePlayerDescriptionResponse(descriptionResponse);
                             var tabHisto = helper.parseHistoryList(data.Data);
 
@@ -30,26 +31,20 @@
                                 predicts: [
                                 ],
                                 stats: {
-                                    "hardcourt": {
-                                        "valueMatchWin": 25,
-                                        "valueQuartWin": 28,
-                                        "valueDemiWin": 23,
-                                        "valueFinalWin": 12,
-                                        "valueFirstSetWin": 33
+                                    hard: {
+                                        matchWin: 33,
+                                        avgFirstSet: 9.12,
+                                        firstSetWin: 60
                                     },
-                                    "claycourt": {
-                                        "valueMatchWin": 55,
-                                        "valueQuartWin": 99,
-                                        "valueDemiWin": 66,
-                                        "valueFinalWin": 1,
-                                        "valueFirstSetWin": 24
+                                    clay: {
+                                        matchWin: 83,
+                                        avgFirstSet: 10.13,
+                                        firstSetWin: 80
                                     },
-                                    "grasscourt": {
-                                        "valueMatchWin": 14,
-                                        "valueQuartWin": 79,
-                                        "valueDemiWin": 100,
-                                        "valueFinalWin": 9,
-                                        "valueFirstSetWin": 77
+                                    grass: {
+                                        matchWin: 3,
+                                        avgFirstSet: 1.12,
+                                        firstSetWin: 10
                                     }
                                 },
                                 histo: tabHisto

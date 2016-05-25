@@ -35,34 +35,12 @@
                 </div>
             </div>
             <div class="vs-stat-detail">
-                <div id="player1-vs-quart" class="vs-stat-part-content">
-                </div>
-                <div class="vs-stat-part-title">
-                    Quart win
-                </div>
-                <div id="player2-vs-quart" class="vs-stat-part-content">
-                </div>
-            </div>
-            <div class="vs-stat-detail">
-                <div id="player1-vs-demi" class="vs-stat-part-content">
-                </div>
-                <div class="vs-stat-part-title">
-                    Demi win
-                </div>
-                <div id="player2-vs-demi" class="vs-stat-part-content">
-                </div>
-            </div>
-            <div class="vs-stat-detail">
-                <div id="player1-vs-final" class="vs-stat-part-content">
-                </div>
-                <div class="vs-stat-part-title">
-                    Final win
-                </div>
-                <div id="player2-vs-final" class="vs-stat-part-content">
-                </div>
+                <div class="radial-content" id="vs-win"></div>
             </div>
         </div>
-        <linear-progress-directive linear-title="Win the first set" tab-linear="{{ linearStat }}">
+        <linear-progress-directive linear-title="Avg number game in the first set" tab-linear="{{ linearStatAvg }}">
+        </linear-progress-directive>
+        <linear-progress-directive linear-title="Win the first set" tab-linear="{{ linearStatWin }}">
         </linear-progress-directive>
     </div>
 </div>
