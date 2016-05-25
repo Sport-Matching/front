@@ -23,8 +23,6 @@
                                                 if (success) {
                                                     var matchList = helper.parseHistoryList(data.Data);
                                                     var stat = helper.generateVSStat(descriptionPlayer1.name, descriptionPlayer2.name, tabHistoPlayer1, tabHistoPlayer2, data.Data.Data);
-                                                    console.log("######## data.Data.Data");
-                                                    console.log(data.Data.Data);
 
                                                     var response = {
                                                         players: {

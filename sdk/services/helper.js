@@ -136,16 +136,6 @@
                 };
             }
 
-            console.log("############# playerName, tabHisto, r, result");
-            console.log(playerName);
-            console.log(tabHisto);
-            console.log(r);
-            console.log({
-                hard: _hard,
-                clay: _clay,
-                grass: _grass
-            });
-
             return {
                 hard: _hard,
                 clay: _clay,

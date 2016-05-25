@@ -55,6 +55,7 @@ angular.module('app')
                     }, 0);
                 }
 
+                var vsLabel = stat.name.player1 + " WIN";
                 function generateVSStat(color, value) {
                     $timeout(function() {
                         if (value >= 0) {
@@ -70,7 +71,6 @@ angular.module('app')
                     }, 0);
                 }
 
-                var vsLabel = stat.name.player1 + " win VS";
                 scope.clickHardCourtsButton = function() {
                     generatePlayerStatView("rgb(75, 165, 240)", "player1", stat.hard.player1);
                     generatePlayerStatView("rgb(75, 165, 240)", "player2", stat.hard.player2);
