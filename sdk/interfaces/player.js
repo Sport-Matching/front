@@ -25,28 +25,13 @@
                             console.log(descriptionResponse);
                             var desc = helper.parsePlayerDescriptionResponse(descriptionResponse);
                             var tabHisto = helper.parseHistoryList(data.Data);
+                            var stat = helper.generateStat(desc.Name, data.Data.Data);
 
                             var response = {
                                 description: desc,
                                 predicts: [
                                 ],
-                                stats: {
-                                    hard: {
-                                        matchWin: 33,
-                                        avgFirstSet: 9.12,
-                                        firstSetWin: 60
-                                    },
-                                    clay: {
-                                        matchWin: 83,
-                                        avgFirstSet: 10.13,
-                                        firstSetWin: 80
-                                    },
-                                    grass: {
-                                        matchWin: 3,
-                                        avgFirstSet: 1.12,
-                                        firstSetWin: 10
-                                    }
-                                },
+                                stats: stat,
                                 histo: tabHisto
                             };
                             completion(success, error, response);
