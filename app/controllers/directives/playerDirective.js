@@ -8,7 +8,7 @@ angular.module('app')
         scope.$watch(function() {
             return element.attr('player');
         }, function(newValue) {
-            if (attrs.player !== undefined) {
+            if (attrs.player !== undefined && attrs.player !== "") {
                 scope.player = JSON.parse(newValue);
             } else {
                 scope.player = {
