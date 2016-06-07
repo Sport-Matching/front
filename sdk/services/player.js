@@ -68,6 +68,29 @@
                 });
             };
 
+            player.getPrediction = function (player1_name, player2_name, date) {
+                var deferred = $q.defer();
+                $http({
+                    url: '/api/prediction',
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for(var p in obj)
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
+                    },
+                    data: {'j1':player1_name, 'j2':player2_name, 'date': date}
+                }).
+                success(function (result) {
+                    deferred.resolve(result);
+                }).
+                error(function (result, status) {
+                    deferred.reject(result);
+                });
+                return deferred.promise;
+            };
+
             return player;
         }]);
 })();

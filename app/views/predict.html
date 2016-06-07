@@ -1,0 +1,18 @@
+<div class="div-header">
+    <img src="/Design/sport-matching-logo.png" class="img-logo"/>
+    <div class="clearfix"></div>
+
+    <md-autocomplete class="input-search" md-search-text="searchText" md-items="item in querySearch(searchText)"
+                     md-item-text="item.Text" md-min-length="0" md-selected-item-change="goTo(item)"
+                     placeholder="Nadal vs Federer, Tsonga, Roland Garros..." md-autoselect="true">
+        <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">
+                {{ item.Text }}
+            </span>
+        </md-item-template>
+        <md-not-found>
+            No states matching "{{ searchText }}" were found.
+        </md-not-found>
+    </md-autocomplete>
+    {{result}}
+</div>

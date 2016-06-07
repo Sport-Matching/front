@@ -25,6 +25,13 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller:'HomeController'
         });
 
+        $stateProvider.state('predict',{
+            url:'/predict',
+            title: 'predict',
+            templateUrl:'views/predict.html',
+            controller:'PredictController'
+        });
+
         $stateProvider.state('matches',{
             url:'/matches/:player1Id/vs/:player2Id',
             title: 'Player VS player',

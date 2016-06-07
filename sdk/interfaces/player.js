@@ -43,6 +43,9 @@
                 }
             })
         };
+        
+        playerInterface.getPrediction = player.getPrediction;
+        
 
         return playerInterface;
     }]);
