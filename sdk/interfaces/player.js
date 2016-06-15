@@ -28,8 +28,9 @@
 
                             var response = {
                                 description: desc,
-                                predicts: [
-                                ],
+                                predicts: {
+                                    player1Name: desc.name
+                                },
                                 stats: stat,
                                 histo: tabHisto
                             };

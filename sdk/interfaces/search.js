@@ -7,11 +7,11 @@
     'use strict';
 
     angular.module('appInterfaces')
-        .factory('searchInterface', [ '$http', '$q', 'matches', 'player', function($http, $q, matches, player) {
+        .factory('searchInterface', ['$http', '$q', 'matches', 'player', function ($http, $q, matches, player) {
 
             var searchInterface = {};
 
-            searchInterface.search = function(text) {
+            searchInterface.search = function (text) {
 
                 var deferred = $q.defer();
 
@@ -22,7 +22,7 @@
 
                 var tab = text.split(" ");
                 var isMatch = false;
-                tab.forEach(function(e){
+                tab.forEach(function (e) {
 
                     if (e == 'vs') {
                         isMatch = true;
@@ -47,8 +47,7 @@
                                     Data: []
                                 };
 
-                                player2.Data.forEach(function(item)
-                                {
+                                player2.Data.forEach(function (item) {
                                     data.Data.push({
                                         Player1: player1,
                                         Player2: item,
@@ -68,15 +67,29 @@
                     }, deferred.reject);
                 }
                 else {
-                    player.search(0, 10, text).then(function(data)
-                    {
-                        data.Data.forEach(function(item)
-                        {
+                    player.search(0, 10, text).then(function (data) {
+                        data.Data.forEach(function (item) {
                             item.Text = item.Name;
                         });
                         deferred.resolve(data);
                     }, deferred.reject);
                 }
+                return deferred.promise;
+            };
+
+            searchInterface.searchPlayer = function (text) {
+                var deferred = $q.defer();
+
+                if (text == null) {
+                    text = "";
+                }
+                text = angular.lowercase(text);
+                player.search(0, 10, text).then(function (data) {
+                    data.Data.forEach(function (item) {
+                        item.Text = item.Name;
+                    });
+                    deferred.resolve(data);
+                }, deferred.reject);
                 return deferred.promise;
             };
 

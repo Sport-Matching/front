@@ -15,42 +15,39 @@
             </md-button>
         </div>
         <div class="pred-input" ng-show="!haveTwoPlayer">
-            
+            <md-autocomplete class="input-search-pred" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.Text"
+                md-min-length="0" md-selected-item-change="goTo(item)" placeholder="Nadal, Federer, Tsonga" md-autoselect="true">
+                <md-item-template>
+                    <span md-highlight-text="searchText" md-highlight-flags="^i">
+                    {{ item.Text }}
+                </span>
+                </md-item-template>
+                <md-not-found>
+                    No states matching "{{ searchText }}" were found.
+                </md-not-found>
+            </md-autocomplete>
         </div>
         <no-content-part-found ng-show="!contentOnPredictionPart"></no-content-part-found>
-        <div class="vs-stat-detail">
-            <div id="player1-vs-pred" class="vs-stat-part-content">
-            </div>
-            <div class="vs-stat-part-title">
-                    VS
-            </div>
-            <div id="player2-vs-pred" class="vs-stat-part-content">
-            </div>
+        <div ng-show="showContentPart">
             <div class="vs-stat-detail">
                 <div class="vs-stat-part-text">
-                    <!-- {{ stats.name.player1 }} -->
+                    {{ player1Name }}
                 </div>
                 <div class="vs-stat-part-text-title">
                 </div>
                 <div class="vs-stat-part-text">
-                    <!-- {{ stats.name.player2 }} -->
+                    {{ player2Name }}
+                </div>
+            </div>
+            <div class="vs-stat-detail">
+                <div id="player1-vs-pred" class="vs-stat-part-content">
+                </div>
+                <div class="vs-stat-part-title">
+                    VS
+                </div>
+                <div id="player2-vs-pred" class="vs-stat-part-content">
                 </div>
             </div>
         </div>
-        <!-- <div class="player-predict-cnt" ng-repeat="predicts in predictions" ng-show="contentOnPredictionPart">
-            <div class="player-predict-cnt-date">{{ predicts.date }}</div>
-            <div ng-repeat="predict in predicts.predictions">
-                <div class="player-predict-cnt-top">
-                    <div class="player-predict-cnt-top-name player-predict-cnt-top-name-left">{{ predict.player1 }}</div>
-                    <div class="player-predict-cnt-top-radial player-predict-cnt-top-radial-azure" id="player-predict-radial-azure-{{ predict.id }}"></div>
-                    <div class="player-predict-cnt-top-radial player-predict-cnt-top-radial-twitter" id="player-predict-radial-twitter-{{ predict.id }}"></div>
-                    <div class="player-predict-cnt-top-name player-predict-cnt-top-name-right">{{ predict.player2 }}</div>
-                </div>
-                <div class="player-predict-cnt-bottom">
-                    <linear-progress-directive linear-title="Win the first set" id-linear="player-predict-cnt-linear-{{ predict.id }}">
-                    </linear-progressdirective>
-                </div>
-            </div>
-        </div>-->
     </div>
 </div>

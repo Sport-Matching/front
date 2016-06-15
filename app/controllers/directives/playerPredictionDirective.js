@@ -1,58 +1,89 @@
 //playerPredictionDirective
 angular.module('app')
-.directive('playerPredictionDirective', ['$timeout', function($timeout) {
-    return {
-        restrict: 'E',
-        transclude: true,
-        scope: {},
-        link: function(scope, element, attrs) {
-            scope.$watch(function() {
-                return element.attr('predicts');
-            }, function(newValue) {
-                if (attrs.predicts !== undefined && attrs.predicts != "") {
-                    var tabPrediction = JSON.parse(attrs.predicts);
-                    scope.predictions = tabPrediction;
-                    if (tabPrediction !== undefined) {
-                        function generateAPlayerPredictionView(predict) {
-                            var player1color = "rgb(75, 166, 238)";
-                            var player2color = "rgb(66, 80, 175)";
+    .directive('playerPredictionDirective', ['$timeout', 'searchInterface', function ($timeout, searchInterface) {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {},
+            link: function (scope, element, attrs) {
+                scope.$watch(function () {
+                    return element.attr('predicts');
+                }, function (newValue) {
+                    if (attrs.predicts !== undefined && attrs.predicts != "") {
+                        var p = JSON.parse(attrs.predicts);
+                        function generatePrediction(color, id, value) {
+                            $timeout(function () {
+                                radialProgress(document.getElementById(id + '-vs-pred'), color)
+                                    .diameter(120)
+                                    .value(value)
+                                    .render();
+                            });
+                        };
 
-                            var colorAzure = (predict.azurePlayer1 >= 50) ? player2color : player1color;
-                            var bagroundAzureColor = (predict.azurePlayer1 < 50) ? player2color : player1color;
-                            radialProgress(document.getElementById('player-predict-radial-azure-' + predict.id), colorAzure, bagroundAzureColor)
-                            .label("Azure")
-                            .diameter(120)
-                            .value((predict.azurePlayer1 >= 50) ? predict.azurePlayer1 : (100 - predict.azurePlayer1))
-                            .render();
+                        scope.haveTwoPlayer = p.player2Name !== undefined;
+                        scope.player1Name = p.player1Name;
+                        scope.player2Name = p.player2Name;
+                        scope.contentOnPredictionPart = true;
+                        scope.showContentPart = scope.haveTwoPlayer;
 
-                            var colorTwitter = (predict.twitterPlayer1 >= 50) ? player2color : player1color;
-                            var bagroundTwitterColor = (predict.twitterPlayer1 < 50) ? player2color : player1color;
-                            radialProgress(document.getElementById('player-predict-radial-twitter-' + predict.id), colorTwitter, bagroundTwitterColor)
-                            .label("Twitter")
-                            .diameter(120)
-                            .value((predict.twitterPlayer1 >= 50) ? predict.twitterPlayer1 : (100 - predict.twitterPlayer1))
-                            .render();
+                        var viewHard = function () {
+                            if (scope.contentOnPredictionPart) {
+                                generatePrediction("rgb(75, 165, 240)", "player1", 0.1565 * 100);
+                                generatePrediction("rgb(75, 165, 240)", "player2", 0.76996 * 100);
+                            }
+                        };
+                        var viewClay = function () {
+                            if (scope.contentOnPredictionPart) {
+                                generatePrediction("rgb(215, 125, 90)", "player1", 0.1565 * 100);
+                                generatePrediction("rgb(215, 125, 90)", "player2", 0.76996 * 100);
+                            }
+                        };
+                        var viewGrass = function () {
+                            if (scope.contentOnPredictionPart) {
+                                generatePrediction("rgb(135, 165, 95)", "player1", 0.1565 * 100);
+                                generatePrediction("rgb(135, 165, 95)", "player2", 0.76996 * 100);
+                            }
+                        };
 
-                            $timeout(function() {
-                                progressLine(document.getElementById('player-predict-cnt-linear-' + predict.id), player1color, true, player2color)
-                                .valueLeft(predict.firstSetPlayer1);
+                        scope.querySearch = function (search) {
+                            return searchInterface.searchPlayer(search).then(function (result) {
+                                return result.Data;
+                            }).catch(function (error) {
+                                console.error(error);
+                                return [];
+                            });
+                        };
+
+                        scope.goTo = function (item) {
+                            if (item !== undefined && item.Name !== undefined) {
+                                scope.contentOnPredictionPart = true;
+                                scope.showContentPart = true;
+                                scope.player2Name = item.Name;
+                                viewHard();
+                            } else {
+                                scope.showContentPart = false;
+                                scope.player2Name = undefined;
+                            }
+                        };
+
+                        scope.clickHardCourtsButton = function () {
+                            viewHard();
+                        };
+                        scope.clickClayCourtsButton = function () {
+                            viewClay();
+                        };
+                        scope.clickGrassCourtsButton = function () {
+                            viewGrass();
+                        };
+
+                        if (scope.haveTwoPlayer) {
+                            $timeout(function () {
+                                viewHard();
                             }, 0);
                         }
-
-                        scope.contentOnPredictionPart = tabPrediction.length !== 0;
-                        $timeout(function () {
-                            for (u in tabPrediction) {
-                                for (i in tabPrediction[u].predictions) {
-                                    generateAPlayerPredictionView(tabPrediction[u].predictions[i]);
-                                }
-                            }
-                        }, 0);
-                    } else {
-                        scope.contentOnPredictionPart = false;
                     }
-                }
-            });
-        },
-        templateUrl: 'views/directives/playerPredictionDirective.html'
-    };
-}]);
+                });
+            },
+            templateUrl: 'views/directives/playerPredictionDirective.html'
+        };
+    }]);

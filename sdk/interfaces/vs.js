@@ -29,7 +29,10 @@
                                                             player1: descriptionPlayer1,
                                                             player2: descriptionPlayer2
                                                         },
-                                                        predicts: [],
+                                                        predicts: {
+                                                            player1Name: descriptionPlayer1.name,
+                                                            player2Name: descriptionPlayer2.name
+                                                        },
                                                         stats: stat,
                                                         hists: matchList
                                                     }
