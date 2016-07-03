@@ -1,5 +1,5 @@
 <div ng-controller="NavBarController" class="div-header">
-    <img src="/Design/sport-matching-logo.png" class="img-logo"/>
+    <a ui-sref="home"><img src="/Design/sport-matching-logo.png" class="img-logo"/></a>
     <div class="clearfix"></div>
 
     <md-autocomplete class="input-search" md-search-text="searchText" md-items="item in querySearch(searchText)"
