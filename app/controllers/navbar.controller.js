@@ -1,12 +1,11 @@
-angular.module('app').controller('NavBarController', ['$scope', '$state', '$log', 'searchInterface', 'errorDialogMd',
-    function($scope, $state, $log, searchInterface, errorDialogMd) {
+angular.module('app').controller('NavBarController', ['$scope', '$state', '$log', 'searchInterface', '$rootScope',
+    function($scope, $state, $log, searchInterface, $rootScope) {
 
         $scope.querySearch = function(search) {
             return searchInterface.search(search).then(function(result){
+                $rootScope.$emit("searchResultChanged", result.Data);
                 return result.Data;
             }).catch(function(error) {
-                console.error(error);
-                //errorDialogMd.errorDialog(error);
                 return [];
             });
         };

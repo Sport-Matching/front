@@ -4,7 +4,7 @@
 
     <md-autocomplete class="input-search" md-search-text="searchText" md-items="item in querySearch(searchText)"
                      md-item-text="item.Text" md-min-length="0" md-selected-item-change="goTo(item)"
-                     placeholder="Nadal vs Federer, Tsonga, Roland Garros..." md-autoselect="true">
+                     placeholder="Nadal vs Federer, Tsonga..." md-autoselect="true" md-no-cache="true">
         <md-item-template>
             <span md-highlight-text="searchText" md-highlight-flags="^i">
                 {{ item.Text }}
