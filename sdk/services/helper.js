@@ -180,17 +180,17 @@
                     u += 1;
                 }
 
-                if (t.Tournament.GroundType === 3 || t.Tournament.GroundType === 4 || t.Tournament.GroundType === 5 || t.Tournament.GroundType === 7) {
+                if (t.Tournament.GroundType === 9 || t.Tournament.GroundType === 11 || t.Tournament.GroundType === 12 || t.Tournament.GroundType === 14) {
                     tWinVSPlayer1.hard.count += 1;
                     if ((player1IsThePlayer1 && nbSetP1 > nbSetP2) || (!player1IsThePlayer1 && nbSetP2 > nbSetP1)) {
                         tWinVSPlayer1.hard.win += 1;
                     }
-                } else if (t.Tournament.GroundType === 1 || t.Tournament.GroundType === 2) {
+                } else if (t.Tournament.GroundType === 8 || t.Tournament.GroundType === 13) {
                     tWinVSPlayer1.clay.count += 1;
                     if ((player1IsThePlayer1 && nbSetP1 > nbSetP2) || (!player1IsThePlayer1 && nbSetP2 > nbSetP1)) {
                         tWinVSPlayer1.clay.win += 1;
                     }
-                } else if (t.Tournament.GroundType === 6) {
+                } else if (t.Tournament.GroundType === 10) {
                     tWinVSPlayer1.grass.count += 1;
                     if ((player1IsThePlayer1 && nbSetP1 > nbSetP2) || (!player1IsThePlayer1 && nbSetP2 > nbSetP1)) {
                         tWinVSPlayer1.grass.win += 1;
