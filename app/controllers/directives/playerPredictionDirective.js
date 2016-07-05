@@ -48,7 +48,6 @@ angular.module('app')
                                 scope.contentOnPredictionPart = true;
                                 scope.showContentPart = true;
                                 $timeout(function () {
-                                    console.log(r);
                                     var v1 = (r.Data.j1 === name1) ? r.Data.prediction : r.Data.prediction2;
                                     var v2 = (r.Data.j2 === name1) ? r.Data.prediction : r.Data.prediction2;
 
