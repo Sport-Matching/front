@@ -27,6 +27,9 @@
                 </md-not-found>
             </md-autocomplete>
         </div>
+        <center>
+            <loading-directive ng-show="isLoading"></loading-directive>
+        </center>
         <no-content-part-found ng-show="!contentOnPredictionPart"></no-content-part-found>
         <div ng-show="showContentPart">
             <div class="vs-stat-detail">

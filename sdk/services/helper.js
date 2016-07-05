@@ -66,7 +66,7 @@
                     u += 1;
                 }
 
-                if (t.Tournament.GroundType === 3 || t.Tournament.GroundType === 4 || t.Tournament.GroundType === 5 || t.Tournament.GroundType === 7) {
+                if (t.Tournament.GroundType === 9 || t.Tournament.GroundType === 11 || t.Tournament.GroundType === 12 || t.Tournament.GroundType === 14) {
                     r.hard.matchCount += 1;
                     r.hard.nbGameFirstSet += nbGFS;
                     if ((isPlayer1 && player1WinFirstSet) || (!isPlayer1 && !player1WinFirstSet)) {
@@ -75,7 +75,7 @@
                     if ((isPlayer1 && nbSetP1 > nbSetP2) || (!isPlayer1 && nbSetP2 > nbSetP1)) {
                         r.hard.matchWin += 1;
                     }
-                } else if (t.Tournament.GroundType === 1 || t.Tournament.GroundType === 2) {
+                } else if (t.Tournament.GroundType === 8 || t.Tournament.GroundType === 13) {
                     r.clay.matchCount += 1;
                     r.clay.nbGameFirstSet += nbGFS;
                     if ((isPlayer1 && player1WinFirstSet) || (!isPlayer1 && !player1WinFirstSet)) {
@@ -84,7 +84,7 @@
                     if ((isPlayer1 && nbSetP1 > nbSetP2) || (!isPlayer1 && nbSetP2 > nbSetP1)) {
                         r.clay.matchWin += 1;
                     }
-                } else if (t.Tournament.GroundType === 6) {
+                } else if (t.Tournament.GroundType === 10) {
                     r.grass.matchCount += 1;
                     r.grass.nbGameFirstSet += nbGFS;
                     if ((isPlayer1 && player1WinFirstSet) || (!isPlayer1 && !player1WinFirstSet)) {
