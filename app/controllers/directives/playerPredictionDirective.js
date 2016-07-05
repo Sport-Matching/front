@@ -42,15 +42,15 @@ angular.module('app')
                             var d = new Date();
                             var strd = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
-                            var p = playerInterface.getPrediction(name1, name2, strd);
+                            var p = playerInterface.getPrediction(name1, name2, strd, ground_type);
                             p.then(function (r) {
                                 scope.isLoading = false;
                                 scope.contentOnPredictionPart = true;
                                 scope.showContentPart = true;
                                 $timeout(function () {
                                     console.log(r);
-                                    var v1 = r.Data.prediction;
-                                    var v2 = r.Data.prediction2;
+                                    var v1 = (r.Data.j1 === name1) ? r.Data.prediction : r.Data.prediction2;
+                                    var v2 = (r.Data.j2 === name1) ? r.Data.prediction : r.Data.prediction2;
 
                                     completion(v1, v2);
                                 }, 0);

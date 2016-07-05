@@ -68,7 +68,7 @@
                 });
             };
 
-            player.getPrediction = function (player1_name, player2_name, date) {
+            player.getPrediction = function (player1_name, player2_name, date, ground) {
                 var deferred = $q.defer();
                 $http({
                     url: '/api/prediction',
@@ -80,7 +80,7 @@
                             str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                         return str.join("&");
                     },
-                    data: {'j1':player1_name, 'j2':player2_name, 'date': date}
+                    data: {'j1':player1_name, 'j2':player2_name, 'date': date, 'ground': ground}
                 }).
                 success(function (result) {
                     deferred.resolve(result);
